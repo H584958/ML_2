@@ -1,9 +1,34 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, session, redirect, url_for
+from flask_bootstrap import Bootstrap
+
+from forms import DataForm
+from predict import predict
+
+import pickle
 
 app = Flask(__name__)
 
-@app.route('/')
+bootstrap = Bootstrap(app)
+
+app.config['SECRET_KEY']="DAT158"
+
+@app.route('/', methods=['GET', 'POST'])
+@app.route('/index', methods=['GET', 'POST'])
 def index():
-    return render_template('index.html')
+
+    form = DataForm()
+    if form.validate_on_submit():
+        for fieldname, value in form.data.items():
+            session[fieldname] = value
+        pred = predict(session)
+        session['pred'] = pred
+        return redirect(url_for('index'))
+    return render_template('index.html', form=form)
+
+@app.route('/dashboard')
+def dashboard():
+    return render_template('dashboard.html')
+    
+
 if __name__ == "__main__":
     app.run(debug=True)
