@@ -6,14 +6,14 @@ model = joblib.load('models/TMDB_rf.joblib')
 
 def get_form_data(data):
     feature_values = {
-        'budget': 0,
-        'popularity': 0,
-        'runtime': 0, 
+        'budget': 100000,
+        'popularity': 5,
+        'runtime': 60, 
         'has_collection': 0,
         'has_homepage': 0,
-        'is_en_original_language': 0,
-        'crew_count':0,
-        'cast_count':0,
+        'is_en_original_language': 1,
+        'crew_count':5,
+        'cast_count':5,
         'produced_US':0,
         'collection_and_homepage': 0
     }
@@ -28,7 +28,7 @@ def predict(data, debug=False):
     if debug: print(f'Feature values: {values}\n')
 
     colums_order = ['budget', 'popularity', 'runtime', 'has_collection', 'has_homepage', 'is_en_original_language', 
-    'crew_count', 'cast_count', 'produced_US', 'collection_an_homepage']
+    'crew_count', 'cast_count', 'produced_US', 'collection_and_homepage']
 
     values = np.array([values[feature] for feature in colums_order], dtype=object)
 
