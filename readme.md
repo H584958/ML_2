@@ -1,7 +1,9 @@
 We chose the excercise TMDB Box Office Prediction. The task were to make and train a model, thats going to predict the revenue of the movie. This were the columns in the dataset: 
 
- 0   id                     3000 non-null   int64  
+ 0   id                     3000 non-null   int64
+ 
  1   belongs_to_collection  604 non-null    object 
+ 
  2   budget                 3000 non-null   int64  
  3   genres                 2993 non-null   object 
  4   homepage               946 non-null    object 
