@@ -7,4 +7,6 @@ The sets had a lot of objects, so we needed to fix this in a good way. We checke
 
 We tried using PyCaret, but didnt get it to work, so we dropped it entirely. 
 
-We tried using different diffent models, K-nearest neighbors, Stochastic gradient descent, logastic regression, and ended up with random forest regressor. 
+We tried using different diffent models, K-nearest neighbors, Stochastic gradient descent, logastic regression, and ended up with random forest regressor.
+
+We used the joblib library to export our model, and then we deployed with Flask. 
